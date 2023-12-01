@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import './App.css';
 export default function App() {
   const [formData, setFormData] = useState({});
 
@@ -7,17 +7,34 @@ export default function App() {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const response = await fetch("http://localhost:8080/demo", {
+  //     method: "GET",
+  //   });
+  //  const data= await response.text()
+  //  console.log(data);
+  // };
+
+    const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitted data:", formData);
+    const response = await fetch("http://localhost:8080/demo", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers:{
+        "Content-Type" : "application/json"
+      }
+    });
+   const data= await response.json()
+   console.log(data);
   };
 
   return (
-    <div>
+    <div className="container">
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name</label>
@@ -44,4 +61,3 @@ export default function App() {
     </div>
   );
 }
-
