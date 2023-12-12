@@ -1,23 +1,24 @@
-const  express = require("express") 
-const bodyParser = require('body-parser')
-const cors = require("cors")
-const server = express();
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
+const app = express();
+const PORT = 5000;
 
-server.use(cors())
-server.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(cors());
 
-// server.get("/demo" , (req,res)=>{
-//     res.send("hello")
-// })
+let students = [
+  { id: 1, name: 'Alice', grade: 'A' },
+  { id: 2, name: 'Bob', grade: 'B' },
+  { id: 3, name: 'Charlie', grade: 'C' }
+];
 
+app.get('/', (req, res) => {
+  res.send(students);
+});
 
-server.post("/demo" , (req,res)=>{
-    res.json(req.body)
-    console.log(req.body, "resbody");
-})
-
-
-server.listen(8080, ()=>{
-    console.log("server started ");
-})
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+uy
