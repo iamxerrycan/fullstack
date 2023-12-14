@@ -33,7 +33,6 @@ const Header = () => {
             About
           </p>
         </link>
-     
       </div>
     </div>
   );
