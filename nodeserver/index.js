@@ -1,24 +1,21 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors"
+import userRoutes from './router/users.js'
 
-const app = express();
-const PORT = 5000;
 
-app.use(bodyParser.json());
-app.use(cors());
+const app =express();
+const port = 5000;
+app.use(bodyParser.json())
+app.use(cors())
 
-let students = [
-  { id: 1, name: 'Alice', grade: 'A' },
-  { id: 2, name: 'Bob', grade: 'B' },
-  { id: 3, name: 'Charlie', grade: 'C' }
-];
 
-app.get('/', (req, res) => {
-  res.send(students);
-});
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-uy
+app.use("/", userRoutes)
+app.all("*" ,(req,res)=>res.send("thats api doesnt exist"))
+
+
+app.get("/" , (req,res)=>res.send("hello express"))
+
+
+app.listen(port , ()=> console.log(`serverislistening at port: ${port}`));

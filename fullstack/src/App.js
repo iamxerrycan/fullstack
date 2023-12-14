@@ -1,105 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import AddEdit from "./pages/AddEdit";
+import View from "./pages/View";
 
-const CRUDComponent = () => {
-  const [data, setData] = useState([]);
-  const [newItem, setNewItem] = useState('');
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch('/api/data');
-      if (response.ok) {
-        const jsonData = await response.json();
-        setData(jsonData);
-      } else {
-        throw new Error('Failed to fetch data');
-      }
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
-  const handleAdd = async () => {
-    try {
-      const response = await fetch('/api/data', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ item: newItem }),
-      });
-      if (response.ok) {
-        const jsonData = await response.json();
-        setData([...data, jsonData]);
-        setNewItem('');
-      } else {
-        throw new Error('Failed to add item');
-      }
-    } catch (error) {
-      console.error('Error adding item:', error);
-    }
-  };
-
-  const handleUpdate = async (id, updatedItem) => {
-    try {
-      const response = await fetch(`/api/data/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ item: updatedItem }),
-      });
-      if (response.ok) {
-        const jsonData = await response.json();
-        const updatedData = data.map(item => (item.id === id ? jsonData : item));
-        setData(updatedData);
-      } else {
-        throw new Error('Failed to update item');
-      }
-    } catch (error) {
-      console.error('Error updating item:', error);
-    }
-  };
-
-  const handleDelete = async (id) => {
-    try {
-      const response = await fetch(`/api/data/${id}`, {
-        method: 'DELETE',
-      });
-      if (response.ok) {
-        const updatedData = data.filter(item => item.id !== id);
-        setData(updatedData);
-      } else {
-        throw new Error('Failed to delete item');
-      }
-    } catch (error) {
-      console.error('Error deleting item:', error);
-    }
-  };
-
+const App = () => {
   return (
-    <div>
-      <h1>CRUD Application</h1>
-      <input
-        type="text"
-        value={newItem}
-        onChange={(e) => setNewItem(e.target.value)}
-      />
-      <button onClick={handleAdd}>Add</button>
-      <ul>
-        {data.map(item => (
-          <li key={item.id}>
-            {item.item}
-            <button onClick={() => handleUpdate(item.id, 'Updated Item')}>Update</button>
-            <button onClick={() => handleDelete(item.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <ToastContainer />
+        <Switch>
+          <Route exact path="/" Component={Home} />
+          <Route exact path="/add" Component={AddEdit} />
+          <Route exact path="/update/:id" Component={AddEdit} />
+          <Route exact path="/view/:id" Component={View} />
+          <Route exact path="/about" Component={About} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 };
 
-export default CRUDComponent;
+export default App;
