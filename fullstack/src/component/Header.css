@@ -1,0 +1,51 @@
+/* *{
+  margin: 0;
+  padding: 0;
+} */
+.header {
+  overflow: hidden;
+  background-color: rgb(194, 189, 189);
+}
+
+.header p {
+  float: left;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 4px;
+  line-height: 15px;
+  text-decoration: none;
+}
+
+.header p.img {
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+}
+
+.header p.hover {
+  background-color: rgb(201, 25, 25);
+  color: rgb(7, 7, 7);
+}
+.header p.active {
+  background-color: rgb(169, 16, 16);
+  color: rgb(216, 196, 196);
+}
+
+.header-jee {
+  float: right;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .header p {
+    float: none;
+    text-align: left;
+    display: block;
+  }
+
+  .header-jee {
+    float: none;
+  }
+}

@@ -1,0 +1,73 @@
+/* Home.css */
+.main {
+  margin: 40px;
+}
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: rgb(169, 16, 16);
+}
+
+.user-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.user-table tbody tr:hover {
+  background-color: #e2e2e2;
+}
+
+/* Style for action buttons (you can further style as needed) */
+.user-table button {
+  margin-right: 15px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Home.css */
+/* ... (other styles) */
+
+/* Style for action buttons */
+.btn-edit,
+.btn-delete,
+.btn-view {
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-edit {
+  background-color: #07771d !important; /* Edit button color */
+  color: #08770d;
+}
+
+.btn-delete {
+  background-color: #9d0211 !important; /* Delete button color */
+  color: #990606;
+}
+
+.btn-view {
+  background-color: #1366a6; /* View button color */
+  color: #fff;
+}
+
+/* Hover effect for buttons */
+.btn-edit:hover,
+.btn-delete:hover,
+.btn-view:hover {
+  opacity: 0.8;
+}

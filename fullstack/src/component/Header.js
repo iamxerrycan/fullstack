@@ -1,38 +1,50 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import React from "react";
+import "./Header.css";
 
 const Header = () => {
-  const [activeTab, setActivetab] = "Home";
+  const [activeTab, setActivetab] = useState("Home");
+
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setActivetab("Home");
+    } else if (location.pathname === "./add") {
+      setActivetab("AddUser");
+    } else if (location.pathname === "/about") {
+      setActivetab("About");
+    }
+  }, [location]);
 
   return (
     <div className="header">
-      <p className="paragraph"> asdfghjsdfgh</p>
+      <p className="img">User System</p>
       <div className="header-jee">
-        <link to="/">
+        <Link to="/">
           <p
             className={`${activeTab === "Home" ? "active" : ""} `}
-            onclick={() => setActivetab("Home")}
+            onClick={() => setActivetab("Home")}
           >
             Home
           </p>
-        </link>
-        <link to="/">
+        </Link>
+        <Link to="/add">
           <p
             className={`${activeTab === "AddUser" ? "active" : ""} `}
-            onclick={() => setActivetab("AddUser")}
+            onClick={() => setActivetab("AddUser")}
           >
             Adduser
           </p>
-        </link>
-        <link to="/">
+        </Link>
+        <Link to="/about">
           <p
             className={`${activeTab === "About" ? "active" : ""} `}
-            onclick={() => setActivetab("About")}
+            onClick={() => setActivetab("About")}
           >
             About
           </p>
-        </link>
+        </Link>
       </div>
     </div>
   );
