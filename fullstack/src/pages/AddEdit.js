@@ -17,6 +17,19 @@ const AddEdit = () => {
   const [input, setInput] = useState(initialState);
   const { name, email, contact } = input;
 
+  useEffect(() => {
+    if (id) {
+      getSingleuser(id);
+    }
+  }, [id]);
+
+  const getSingleuser = async (id) => {
+    const response = await axios.get(`http://localhost:5000/user/${id}`);
+    if (response.status === 200) {
+      setInput({ ...response.data }[0]);
+    }
+  };
+
   const addUser = async (data) => {
     try {
       const response = await axios.post("http://localhost:5000/user", data);
@@ -28,17 +41,14 @@ const AddEdit = () => {
     }
   };
 
-  useEffect(() => {
-    if (id) {
-      getSingleuser(id);
-    }
-  }, [id]);
-
-  const getSingleuser = async (id) => {
-    const response = await axios.get(`http://localhost:5000/user/${id}`);
-    if (response.status === 200) {
-      setInput({ ...response.data }[0]);
-      console.log(response.data,"redata");
+  const updateUser = async (data, id) => {
+    try {
+      const response = await axios.put(`http://localhost:5000/user/${id}`,data);
+      if (response.status === 200) {
+        toast.success(response.data);
+      }
+    } catch (error) {
+      console.error("data not added:", error);
     }
   };
 
@@ -47,7 +57,12 @@ const AddEdit = () => {
     if (!name || !email || !contact) {
       toast.error("please fill all the input");
     } else {
-      addUser(input);
+      if (!id) {
+        addUser(input);
+      } else {
+        updateUser(input, id);
+      }
+
       history("/");
     }
   };

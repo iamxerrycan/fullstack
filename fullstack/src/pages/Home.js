@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Home.css";
+import {toast}  from "react-toastify";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -15,6 +16,7 @@ const Home = () => {
       const response = await axios.get("http://localhost:5000/users");
       if (response.status === 200) {
         setData(response.data);
+        
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -23,9 +25,11 @@ const Home = () => {
 
   const deleteUser = async (id) => {
     if (window.confirm("Are you sure!")) {
+
       try {
         const response = await axios.delete(`http://localhost:5000/user/${id}`);
         if (response.status === 200) {
+          toast.success(response.data);
           getUsers();
         }
       } catch (error) {

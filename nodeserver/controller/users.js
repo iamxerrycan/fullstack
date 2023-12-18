@@ -10,7 +10,7 @@ export const createUser = (req, res) => {
   const user = req.body;
 
   users.push({ ...user, id: uuid() });
-  res.send("user addedsuccesfully");
+  res.send("user added succesfully");
 };
 
 export const getUser = (req, res) => {

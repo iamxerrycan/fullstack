@@ -1,4 +1,4 @@
-/* Home.css */
+
 .main {
   margin: 40px;
 }
@@ -26,7 +26,6 @@
   background-color: #e2e2e2;
 }
 
-/* Style for action buttons (you can further style as needed) */
 .user-table button {
   margin-right: 15px;
   padding: 5px 10px;
@@ -36,10 +35,7 @@
   cursor: pointer;
 }
 
-/* Home.css */
-/* ... (other styles) */
 
-/* Style for action buttons */
 .btn-edit,
 .btn-delete,
 .btn-view {
@@ -51,21 +47,20 @@
 }
 
 .btn-edit {
-  background-color: #07771d !important; /* Edit button color */
+  background-color: #07771d !important;
   color: #08770d;
 }
 
 .btn-delete {
-  background-color: #9d0211 !important; /* Delete button color */
+  background-color: #9d0211 !important; 
   color: #990606;
 }
 
 .btn-view {
-  background-color: #1366a6; /* View button color */
+  background-color: #1366a6; 
   color: #fff;
 }
 
-/* Hover effect for buttons */
 .btn-edit:hover,
 .btn-delete:hover,
 .btn-view:hover {
