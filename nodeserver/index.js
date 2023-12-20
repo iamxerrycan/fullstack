@@ -1,3 +1,4 @@
+//pahla step !
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors"
@@ -12,7 +13,7 @@ app.use(cors())
 
 
 app.use("/", userRoutes)
-app.all("*" ,(req,res)=>res.send("thats api doesnt exist"))
+app.all("*" ,(req,res)=>res.send("thats api doesnt exist"))// if someone choose different port it will show error !
 
 
 app.get("/" , (req,res)=>res.send("hello express"))

@@ -5,6 +5,10 @@
 .header {
   overflow: hidden;
   background-color: rgb(194, 189, 189);
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header p {
@@ -25,16 +29,18 @@
 }
 
 .header p.hover {
-  background-color: rgb(201, 25, 25);
+  background-color: rgb(2, 94, 47);
   color: rgb(7, 7, 7);
 }
 .header p.active {
-  background-color: rgb(169, 16, 16);
+  background-color: rgb(2 , 94 , 47);
   color: rgb(216, 196, 196);
 }
 
 .header-jee {
   float: right;
+  display: flex;
+  justify-content: center;
   margin-right: 10px;
 }
 

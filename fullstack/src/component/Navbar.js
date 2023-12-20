@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import React from "react";
-import "./Header.css";
+import "./Navbar.css";
 
-const Header = () => {
+const Navbar = () => {
   const [activeTab, setActivetab] = useState("Home");
 
   const location = useLocation();
@@ -50,4 +50,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;

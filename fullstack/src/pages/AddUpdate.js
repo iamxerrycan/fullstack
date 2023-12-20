@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import "./AddEdit.css";
+import "./AddUpdate.css";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-const AddEdit = () => {
+const AddUpdate = () => {
   const initialState = {
     name: "",
     email: "",
@@ -110,4 +110,4 @@ const AddEdit = () => {
   );
 };
 
-export default AddEdit;
+export default AddUpdate;
